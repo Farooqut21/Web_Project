@@ -1,0 +1,16 @@
+{% extends "store/layout.html" %}
+{% load static %}
+{% block body %}
+<h1>Profile</h1>
+Username:{{ user.username }} <br>
+
+First Name:{{user.first_name}}<br>
+
+Last Name:{{user.last_name}}<br>
+
+Email : {{user.email}}<br>
+Country: {{user.country}}<br>
+City : {{user.city}}<br>
+Zip Code:{{user.zip}}<br>
+
+{% endblock %}

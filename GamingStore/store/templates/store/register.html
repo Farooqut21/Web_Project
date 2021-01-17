@@ -1,0 +1,61 @@
+{% extends "store/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <h2>Register</h2>
+
+    
+	<div class="form-1" align="center" style="margin: auto">
+    <form action="{% url 'register' %}" method="post" autocomplete="off">
+        {% csrf_token %}
+		<div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="text" name="first_name" placeholder="First Name">
+        </div>
+		<div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+        </div>
+        <div class="form-group col-md-3 mb-3">
+			 <div class="form-group col-md-10 mb-3" style="margin-left: 400px;margin-bottom:100px ">
+			<label style="background-color :aliceblue;font-size: 12px" for="username" > (Password length should be greater than 8 and less than 16 <br> Include atleast 1 Upper case letter and 1 lower case letter <br>
+It should also include atleast one digit)
+ </label>
+			</div>
+            <input class="form-control" autofocus type="text" name="username" placeholder="Username" >
+			{% if username_error %}
+        <div>{{ username_error }}</div>
+    {% endif %}
+			
+        </div>
+        <div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+			
+        </div>
+        <div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+			{% if password_error %}
+        <div>{{ password_error }}</div>
+    {% endif %}
+        </div>
+        <div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+		<div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="text" name="country" placeholder="country">
+        </div>
+		<div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="text" name="city" placeholder="City">
+        </div>
+		<div class="form-group col-md-3 mb-3">
+            <input class="form-control" type="number" name="zip" placeholder="Zip">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+	</div>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}
